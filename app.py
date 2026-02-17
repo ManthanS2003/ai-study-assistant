@@ -23,13 +23,18 @@ if not valid_model:
 model = genai.GenerativeModel(valid_model)
 
 st.set_page_config(page_title="AI Study Assistant", page_icon="🤖")
-st.title("🤖AI Study Assistant")
+st.title("🤖 AI Study Assistant")
 st.write("Ask any question, or upload a PDF to ask about its content.")
 
 tab1, tab2 = st.tabs(["Ask a Question", "Upload PDF & Ask"])
 
 with tab1:
-    user_question = st.text_input("Your question:", placeholder="e.g., Ask Me, Any Type of Question!")
+    # Changed to text_area for multi-line input with auto-resize
+    user_question = st.text_area(
+        "Your question:",
+        placeholder="e.g., Explain the theory of relativity in detail...",
+        height=150  # initial height, but it will expand as you type
+    )
     if st.button("Get Answer", key="ask_btn"):
         if user_question:
             with st.spinner("Thinking..."):
@@ -50,7 +55,12 @@ with tab2:
         with st.expander("Show extracted text preview"):
             st.write(text[:1000] + "...")
         
-        pdf_question = st.text_input("Ask about the PDF:", placeholder="e.g., What is the main topic?")
+        # Changed to text_area for multi-line input
+        pdf_question = st.text_area(
+            "Ask about the PDF:",
+            placeholder="e.g., Summarize the main arguments of the document...",
+            height=100
+        )
         if st.button("Get Answer from PDF", key="pdf_btn"):
             if pdf_question:
                 prompt = f"Based on the following document, answer the question.\n\nDocument:\n{text}\n\nQuestion: {pdf_question}"
