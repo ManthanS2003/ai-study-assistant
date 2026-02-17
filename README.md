@@ -29,7 +29,7 @@ Built with Python, Streamlit, and a touch of curiosity.
    `streamlit run app.py`
 
 ## ☁️ Live Demo
-You can try the live version here: [your-streamlit-app-url] (replace with your actual URL)
+You can try the live version here: https://ai-study-assistant-nzzewjhkkaebv4ffnzrcdx.streamlit.app/
 
 ## 🔒 Security Note
 The `.env` file containing your API key is **not** committed to GitHub (it's in `.gitignore`). When deploying to Streamlit Cloud or Render, add the key as a secret/environment variable.
